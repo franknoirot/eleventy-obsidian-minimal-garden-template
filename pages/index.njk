@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+{%- import "components/macros.njk" as macros -%}
+
+<h1>Frank Noirot's hellscape</h1>
+
+{%- for type in contentTypes -%}
+<h2>{{type.name}}</h2>
+<ul style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
+{%- for post in collections[type.name] -%}
+  {{ macros.gridCard(type.name, post.url, post.data.title, post.data.coverImg) }}
+{%- endfor -%}
+</ul>
+{%- endfor -%}

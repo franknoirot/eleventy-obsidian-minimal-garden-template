@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Overpass";
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/styles/OverpassNerdFont-BoldItalic.otf") format("opentype");
+}
+
+body {
+  font-family: "Overpass", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  background-color: #222;
+  color: #eeeeee;
+}
+
+a {
+  color: white;
+  text-underline-offset: 2px;
+  text-decoration-color: #555;
+}
+
+nav a[aria-current="page"] {
+  color: mediumspringgreen;
+}
+
+main {
+  margin: 2rem;
+}
+
+.grid-card {
+  list-style: none;
+  display: contents;
+}
+
+.grid-card a {
+  text-decoration: none;
+  margin: 0;
+  display: block;
+  border: solid 1px;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.grid-card img {
+  max-width: 100%;
+  display: block;
+}

@@ -1,0 +1,10 @@
+{% macro gridCard(type, url, label, coverImg) %}
+<li class="grid-card {{type}}">
+<a href="{{ url }}">
+  {% if type === 'books' %}
+  <img src="/assets/{{coverImg}}" alt="Cover of {{label}}">
+  {% endif %}
+  <span>{{label}}</span>
+</a>
+</li>
+{% endmacro %}
