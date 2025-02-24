@@ -3,4 +3,5 @@
   {%- for type in contentTypes -%}
   <a href="/{{ type.name }}" {%- if page.url.includes(type.name) -%}aria-current="page"{%- endif -%}>{{ type.name }}</a>
   {%- endfor -%}
+  <a href="/about">me</a>
 </nav>

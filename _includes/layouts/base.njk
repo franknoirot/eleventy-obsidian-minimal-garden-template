@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%- if title -%}{{title}} |&nbsp;{%- endif -%}f.noirot's garden</title>
     <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/{% findContentType contentTypes, page.url %}.css">
+    {% if stylesheet %}
+    <link rel="stylesheet" href="/styles/{{ stylesheet }}.css">
+    {% endif %}
   </head>
   <body>
     {% include 'components/nav.njk' %}

@@ -17,7 +17,7 @@ export default async function (eleventyConfig) {
   });
   eleventyConfig.addGlobalData("layout", "layouts/base.njk");
   await eleventyConfig.addPlugin(addInputDirectoryPlugin, {
-    patterns: ["pages/**.md", "pages/**.njk"],
+    patterns: ["./pages/**.md", "./pages/**.njk"],
     format: "utf-8",
   });
 
@@ -125,12 +125,5 @@ export default async function (eleventyConfig) {
         )
         .map((item) => ({ url: item.url, title: item.data.title }));
     };
-  });
-
-  /**
-   * A shortcode to get the item in an array that is contained in a target string
-   */
-  eleventyConfig.addShortcode("findContentType", (array, target) => {
-    return array.find((item) => target.includes(item.name + "/"))?.name;
   });
 }
