@@ -1,57 +1,78 @@
-@font-face {
-  font-family: "Overpass";
-  font-style: normal;
-  font-weight: normal;
-  font-display: swap;
-  src: url("/styles/OverpassNerdFont-Regular.otf") format("opentype");
+:root {
+  --bg: 20, 20, 20;
+  --text: #dde;
+  --mid: #667;
+  --near-bg: #335;
+  --pop: mediumseagreen;
 }
 
-@font-face {
-  font-family: "Overpass";
-  font-style: italic;
-  font-weight: normal;
-  font-display: swap;
-  src: url("/styles/OverpassNerdFont-Italic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Overpass";
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: url("/styles/OverpassNerdFont-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Overpass";
-  font-style: italic;
-  font-weight: bold;
-  font-display: swap;
-  src: url("/styles/OverpassNerdFont-BoldItalic.otf") format("opentype");
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: 245, 245, 245;
+    --text: #1a1a1a;
+    --mid: #889;
+    --near-bg: #ccc;
+  }
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Overpass", sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
-  background-color: #222;
-  color: #eeeeee;
+  background-color: rgb(var(--bg));
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
 }
 
 a {
-  color: white;
+  color: inherit;
   text-underline-offset: 2px;
-  text-decoration-color: #555;
+  text-decoration-color: var(--mid);
+}
+a:hover {
+  color: var(--pop);
 }
 
-nav a[aria-current="page"] {
-  color: mediumspringgreen;
+.site-nav {
+  position: sticky;
+  top: 16px;
+  margin: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(var(--bg), 0.75);
+  backdrop-filter: blur(3px);
+  border: solid;
+  width: fit-content;
+}
+.site-nav a {
+  text-decoration-color: var(--near-bg);
+}
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--pop);
 }
 
 main {
-  margin: 2rem;
+  margin: 1rem;
 }
 
+h2 small {
+  font-weight: normal;
+  color: var(--mid);
+}
+
+.grid {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
 .grid-card {
   list-style: none;
   display: contents;
@@ -60,13 +81,32 @@ main {
 .grid-card a {
   text-decoration: none;
   margin: 0;
-  display: block;
-  border: solid 1px;
-  border-radius: 4px;
+  display: grid;
+  border: solid 1px var(--near-bg);
   padding: 0.5rem;
+}
+.grid-card a:hover {
+  border-color: var(--pop);
 }
 
 .grid-card img {
   max-width: 100%;
+  max-height: 300px;
   display: block;
+  margin-bottom: 0.5rem;
+}
+
+.grid-card span:has(time) {
+  font-size: 0.8em;
+  color: var(--mid);
+}
+
+footer {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  border: solid 1px;
+  border-bottom: none;
 }

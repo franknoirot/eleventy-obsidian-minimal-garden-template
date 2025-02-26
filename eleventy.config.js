@@ -1,6 +1,8 @@
 import { InputPathToUrlTransformPlugin } from "@11ty/eleventy";
 import addContentLayoutsPlugin from "./addContentLayoutsPlugin.js";
 import addInputDirectoryPlugin from "./addInputDirectoryPlugin.js";
+import markdownItFootnote from "markdown-it-footnote";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 
 const contentTypes = ["posts", "books", "projects", "now"];
 const excludeFromNav = ["now"];
@@ -21,6 +23,24 @@ export default async function (eleventyConfig) {
     format: "utf-8",
   });
 
+  // Get the first `n` elements of a collection.
+  // From https://github.com/11ty/eleventy-base-blog/blob/9baac5c4e3a007b404bed28152c5a3586c5da03a/_config/filters.js#L14C2-L24C5
+  eleventyConfig.addFilter("head", (array, n) => {
+    if (!Array.isArray(array) || array.length === 0) {
+      return [];
+    }
+    if (n < 0) {
+      return array.slice(n);
+    }
+
+    return array.slice(0, n);
+  });
+
+  // Format the passed in date string as specified in the dateStyle option
+  eleventyConfig.addFilter("formatDate", (dateString, dateStyle = "medium") => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, { dateStyle });
+  });
   eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
   await eleventyConfig.addPlugin(addContentLayoutsPlugin, {
@@ -126,4 +146,40 @@ export default async function (eleventyConfig) {
         .map((item) => ({ url: item.url, title: item.data.title }));
     };
   });
+
+  /**
+   * An opinionated shortcode to sort by a date atribute on each item in a collection
+   * @param {Array} arr - the array to sort
+   * @param {{ key: string; reverse: boolean }} options - the options to sort by
+   */
+  eleventyConfig.addFilter("sortByDate", (arr, options) => {
+    function applyKey(obj, keyPath) {
+      let r = { ...obj };
+      const pathSegments = keyPath.split(".");
+      for (const s of pathSegments) {
+        r = r[s];
+      }
+      return r;
+    }
+
+    return arr.sort((a, b) => {
+      const retrievedA = applyKey(a.data, options.key);
+      const retrievedB = applyKey(b.data, options.key);
+      if (retrievedA === undefined || retrievedB === undefined) {
+        return 0;
+      }
+      if (typeof retrievedA === "string") {
+        return options.reverse
+          ? retrievedB.localeCompare(retrievedA)
+          : retrievedA.localeCompare(retrievedB);
+      } else {
+        return options.reverse
+          ? retrievedB - retrievedA
+          : retrievedA - retrievedB;
+      }
+    });
+  });
+
+  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItFootnote));
+  eleventyConfig.addPlugin(syntaxHighlight);
 }
