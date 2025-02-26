@@ -1,4 +1,5 @@
 ---
+title: All my status updates
 layout: layouts/base.njk
 ---
 

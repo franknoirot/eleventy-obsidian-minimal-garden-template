@@ -4,7 +4,6 @@ layout: layouts/base.njk
 {%- import "components/macros.njk" as macros -%}
 
 <h1>Frank Noirot's hellscape</h1>
-
 {%- for type in contentTypes -%}
 <a href="/{{ type.name }}"><h2>{{type.name | capitalize }}&nbsp;<small>{{ collections[type.name].length }} items<small></h2></a>
 <ul class="grid">

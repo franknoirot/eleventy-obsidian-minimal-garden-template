@@ -11,7 +11,7 @@
     "debug": "cross-env DEBUG=Eleventy* eleventy",
     "debugstart": "cross-env DEBUG=Eleventy* eleventy --serve --quiet",
     "benchmark": "cross-env DEBUG=Eleventy:Benchmark* eleventy",
-    "linecount": "git ls-files -- ':!:pnpm-lock.yaml' ':!:public/*' ':!:LICENSE' ':!:content' ':!:*.otf' | xargs wc -l"
+    "linecount": "git ls-files -- ':!:pnpm-lock.yaml' ':!:public/*' ':!:LICENSE' ':!:content' ':!:*.woff2' | xargs wc -l"
   },
   "keywords": [],
   "author": "",

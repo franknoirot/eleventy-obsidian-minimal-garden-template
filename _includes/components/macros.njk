@@ -9,3 +9,53 @@
 </a>
 </li>
 {% endmacro %}
+
+{% macro searchBar(collection, placeholder = "Search ⌘K") %}
+<div class="searchbar">
+  <input type="search" id="search" placeholder="{{ placeholder }}" aria-label="Search" />
+  <div class="search-results" hidden aria-live="polite" role="status"></div>
+</div>
+<script type="module">
+  import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.mjs'
+  const collection = {{ collection | stripCollectionForSearch | dump | safe }}
+  const fuse = new Fuse(collection, {
+    keys: ['title', 'url', 'description'],
+    includeScore: true,
+    ignoreLocation: true,
+    threshold: 0.3
+  })
+  const searchbar = document.querySelector('.searchbar')
+  const input = searchbar.querySelector('input')
+  const resultsDom = searchbar.querySelector('.search-results')
+
+  function updateSearchResults(newInput) {
+    if (newInput.length < 3) {
+      resultsDom.innerHTML = ''
+      resultsDom.hidden = true
+      return
+    }
+    const searchResults = fuse.search(newInput)
+    resultsDom.hidden = false
+    if (!searchResults.length) {
+      resultsDom.innerHTML = '<p>No results found</p>'
+    } else {
+      console.log('hits', resultsDom, searchResults)
+      resultsDom.innerHTML = `<ul>${
+        searchResults.map(({ item }) => 
+          `<li><a href="${item.url}">${item.title}<span>${item.contentType}</span></a></li>`).join('')
+      }</ul>`
+    }
+  }
+  input.addEventListener('input', (event) => {
+    updateSearchResults(event.target.value)
+  })
+  // You know I had to do it to 'em
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'k' && event.metaKey) {
+      event.preventDefault()
+      input.focus()
+      input.select()
+    }
+  })
+</script>
+{% endmacro %}

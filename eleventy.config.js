@@ -182,4 +182,13 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItFootnote));
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.addFilter("stripCollectionForSearch", (collection) =>
+    collection.map((item) => ({
+      url: item.url,
+      title: item.data.title,
+      description: item.data.description,
+      contentType: item.url.split("/")[1],
+    })),
+  );
 }
