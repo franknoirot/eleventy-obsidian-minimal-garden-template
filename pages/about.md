@@ -7,7 +7,7 @@ stylesheet: posts
 
 # About Frank
 
-I’m a developer, and designer, and a city nerd. I’m on the web to try to build collaborative tools that make us more generous and empathetic with each other.
+I’m a developer, and designer, and a city nerd. I’m on the web to try to build collaborative tools that make us more generous and empathetic with each other. I'm working on this digital garden to keep my optimism alive.
 
 ![[about-me.jpg]]
 
@@ -27,7 +27,7 @@ I've been skateboarding longer than I've done anything in my life, and I still k
 
 ## Urban ecology
 
-I attended Ohio State for my undergraduate degree, studying City & Regional Planning and writing a little paper on how the environment should be added into metrics that measure equity in cities. I'm interested in the urban biome, and I'd like to work on bringing city-dwellers closer to the nature all around them. For me that begins with capturing the data on all that urban nature right under our noses, because in our current economic system if it isn't measured it isn't valued. So I've begun volunteering at my local community garden and contributing to the amazing OpenStreetMap project.
+I attended Ohio State for my undergraduate degree, studying City & Regional Planning and writing a little paper on how the environment should be added into metrics that measure equity in cities. Although I don't get to work on urban systems for my day job, I want to commit to using my free time to make the incredible, intricate systems that we live inside and build together less scary and more pleasant for everyone.
 
 In the next 5 years I hope to help create means for people to live materially closer to their biome within cities, whether it's on zoning law that demands higher weight tolerances on buildings to support future roof gardens, or machines that let coffee shops turn their used grounds into bowls for takeout shops in their neighborhood.
 
@@ -35,10 +35,8 @@ In the next 5 years I hope to help create means for people to live materially cl
 
 I believe wholeheartedly that the tools are available today to fundamentally rethink how production happens. I am very interested in designing tools, both physical and digital, that everyday people can use to make other things. On the physical side I have built and donated a 3D Printer, a four-color t-shirt screen printing press, and a CNC machine. On the virtual side, I've started building small tools that help automate simple web design tasks, with the hope to build more robust tools for more concrete problems in the future.
 
-<Callout title="This site is a tool!" level="3" type="success">
-I'm using the Obisidian note-taking app to manage the content of this site right from [[obsidian-cms|inside my second brain]]!
-</Callout>
+I'm using the Obisidian note-taking app to manage the content of this site right from [inside my second brain](/posts/obsidian-cms)!
 
 That's why I'm learning Rust as my systems-level programming language. Tools that people will reach for without thinking need to be impossible to break, and I have a long way to go to build the kind of software that people don't think twice about using.
 
-If you are interested in any of these areas, or are simply looking to connect and share ideas with someone in Manhattan or in cyberspace, please feel free to reach out at [frank@franknoirot.co](mailto:frank@franknoirot.co)
+If you are interested in any of these areas, or are simply looking to connect and share ideas with someone in New York City or in cyberspace, please feel free to reach out at [frank@franknoirot.co](mailto:frank@franknoirot.co)

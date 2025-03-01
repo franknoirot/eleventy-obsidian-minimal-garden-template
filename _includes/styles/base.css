@@ -108,6 +108,7 @@ a:hover {
 .search-results a {
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
 }
 .search-results a span {
   color: var(--mid);
