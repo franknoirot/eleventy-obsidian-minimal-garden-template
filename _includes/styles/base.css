@@ -50,16 +50,21 @@ a:hover {
 .searchbar,
 .searchbar {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 .site-nav,
 .searchbar,
+.searchbar-wrapper button,
 .searchbar .search-results {
   padding: 0.5rem;
   background-color: rgba(var(--bg), 0.75);
   backdrop-filter: blur(3px);
   border: solid;
   width: fit-content;
+}
+.site-nav .content-types {
+  display: contents;
 }
 .site-nav a {
   text-decoration-color: var(--near-bg);
@@ -71,6 +76,9 @@ a:hover {
 
 .searchbar {
   border: 1px var(--mid) solid;
+}
+.searchbar-wrapper button {
+  display: none;
 }
 .searchbar input {
   background-color: var(--near-bg);
@@ -112,6 +120,59 @@ a:hover {
 }
 .search-results a span {
   color: var(--mid);
+}
+@media (max-width: 768px) {
+  .nav-wrapper {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+  }
+  .site-nav {
+    border-width: 2px 2px 0 0;
+    flex-grow: 1;
+    padding-inline-start: 1rem;
+    overflow: auto;
+  }
+  .site-nav .content-types {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    overflow: auto;
+    padding-inline: 1rem;
+  }
+  .searchbar-wrapper {
+    display: contents;
+  }
+  .searchbar-wrapper button {
+    display: block;
+    border-width: 2px 0 0 0;
+    padding: 0 1rem;
+  }
+  .searchbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    width: 100%;
+    border: solid var(--text);
+    border-width: 2px 0 0 0;
+  }
+  .searchbar input {
+    display: block;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: calc(100% - 1rem);
+  }
+  .searchbar .search-results {
+    top: auto;
+    bottom: 100%;
+    right: 1rem;
+    width: calc(100% - 4rem);
+    margin: 1rem;
+  }
 }
 
 main {

@@ -1,7 +1,10 @@
 {% macro searchBar(collection, placeholder = "Search ⌘K") %}
-<div class="searchbar">
-  <input type="search" id="search" placeholder="{{ placeholder }}" aria-label="Search" />
-  <div class="search-results" hidden aria-live="polite" role="status"></div>
+<div class="searchbar-wrapper">
+  <button>🔎</button>
+  <div class="searchbar" style="display: none;">
+    <input type="search" id="search" placeholder="{{ placeholder }}" aria-label="Search" />
+    <div class="search-results" hidden aria-live="polite" role="status"></div>
+  </div>
 </div>
 <script type="module">
   import Fuse from 'https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.mjs'
@@ -15,6 +18,7 @@
   const searchbar = document.querySelector('.searchbar')
   const input = searchbar.querySelector('input')
   const resultsDom = searchbar.querySelector('.search-results')
+  const searchToggle = document.querySelector('.searchbar-wrapper button')
 
   function updateSearchResults(newInput) {
     if (newInput.length < 3) {
@@ -45,5 +49,15 @@
       input.select()
     }
   })
+
+  function toggleSearchBar(e) {
+    console.log(e, this)
+    searchbar.style.display = searchbar.style.display === 'none' ? 'block' : 'none'
+    if (!searchbar.style.display) {
+      input.focus()
+    }
+  }
+
+  searchToggle.addEventListener('click', toggleSearchBar)
 </script>
 {% endmacro %}
