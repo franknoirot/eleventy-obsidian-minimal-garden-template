@@ -24,4 +24,4 @@ The site is built with the [Eleventy](https://www.11ty.dev) static site generato
 These are the past versions of this site from oldest to newest:
 
 1. [https://franknoirot.github.io/](https://franknoirot.github.io/)
-2. [https://v2.franknoirot.co/](https://v2.franknoirot.co/
+2. [https://v2.franknoirot.co/](https://v2.franknoirot.co/)
