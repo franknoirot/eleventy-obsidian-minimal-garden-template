@@ -1,0 +1,14 @@
+---
+title: Frank Noirot's hellscape
+layout: layouts/base.njk
+---
+<h1>{{ title }}</h1>
+
+{% for type in contentTypes %}
+<a href="/{{ type.name }}">
+  <h2>{{type.name | capitalize }}&nbsp;<small>{{ collections[type.name].length }} items<small></h2></a>
+<ul class="grid">
+  {%- assign sortedCollection = collections[type.name] | sortByKey: 'data.updated', true | head: 15 -%}
+  {% for item in sortedCollection %}
+  {% include 'components/grid-card' type: type.name item: item %}{% endfor %}
+</ul>{% endfor %}

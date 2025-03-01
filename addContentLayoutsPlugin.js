@@ -14,6 +14,7 @@ export default async function addContentLayoutsPlugin(config, options) {
 
     config.on("eleventy.before", async ({ dir: baseDir }) => {
       const dirDataFile = join(baseDir.input, dir, `${name}.11tydata.json`);
+      config.watchIgnores.add(dirDataFile);
       await fsp.writeFile(
         dirDataFile,
         JSON.stringify({

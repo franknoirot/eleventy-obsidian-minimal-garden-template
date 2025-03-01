@@ -1,15 +1,3 @@
-{% macro gridCard(type, url, label, coverImg, date) %}
-<li class="grid-card {{type}}">
-<a href="{{ url }}">
-  {% if type === 'books' %}
-  <img src="/assets/{{coverImg}}" alt="Cover of {{label}}" loading="lazy">
-  {% endif %}
-  <span>{{label}}</span>
-  {% if date %}<span>updated <time>{{ date | formatDate }}</time></span>{% endif %}
-</a>
-</li>
-{% endmacro %}
-
 {% macro searchBar(collection, placeholder = "Search ⌘K") %}
 <div class="searchbar">
   <input type="search" id="search" placeholder="{{ placeholder }}" aria-label="Search" />

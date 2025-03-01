@@ -19,7 +19,7 @@ export default async function (eleventyConfig) {
   });
   eleventyConfig.addGlobalData("layout", "layouts/base.njk");
   await eleventyConfig.addPlugin(addInputDirectoryPlugin, {
-    patterns: ["./pages/**.md", "./pages/**.njk"],
+    patterns: ["./pages/**.md", "./pages/**.njk", "./pages/**.liquid"],
     format: "utf-8",
   });
 
@@ -148,11 +148,12 @@ export default async function (eleventyConfig) {
   });
 
   /**
-   * An opinionated shortcode to sort by a date atribute on each item in a collection
+   * An opinionated shortcode to sort by a (possibly nested) key on each item in a collection
    * @param {Array} arr - the array to sort
-   * @param {{ key: string; reverse: boolean }} options - the options to sort by
+   * @param {string} key - an attribute to sort by. Can use dot notation to access nested attributes
+   * @param {boolean} reverse - whether to sort in reverse order
    */
-  eleventyConfig.addFilter("sortByDate", (arr, options) => {
+  eleventyConfig.addFilter("sortByKey", (arr, key, reverse) => {
     function applyKey(obj, keyPath) {
       let r = { ...obj };
       const pathSegments = keyPath.split(".");
@@ -163,19 +164,17 @@ export default async function (eleventyConfig) {
     }
 
     return arr.sort((a, b) => {
-      const retrievedA = applyKey(a.data, options.key);
-      const retrievedB = applyKey(b.data, options.key);
+      const retrievedA = applyKey(a, key);
+      const retrievedB = applyKey(b, key);
       if (retrievedA === undefined || retrievedB === undefined) {
         return 0;
       }
       if (typeof retrievedA === "string") {
-        return options.reverse
+        return reverse
           ? retrievedB.localeCompare(retrievedA)
           : retrievedA.localeCompare(retrievedB);
       } else {
-        return options.reverse
-          ? retrievedB - retrievedA
-          : retrievedA - retrievedB;
+        return reverse ? retrievedB - retrievedA : retrievedA - retrievedB;
       }
     });
   });

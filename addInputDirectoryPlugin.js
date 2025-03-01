@@ -20,5 +20,7 @@ export default async function addInputDirectoryPlugin(config, options) {
 
     config.addTemplate(targetTemplatePath, fileContent);
   }
+  // Watch targets are relative to the input directory I believe
   options.patterns.forEach((p) => config.addWatchTarget(p));
+  config.addWatchTarget("../../pages/**");
 }

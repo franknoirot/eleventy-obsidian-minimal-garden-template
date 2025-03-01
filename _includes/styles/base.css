@@ -69,11 +69,15 @@ a:hover {
   color: var(--pop);
 }
 
+.searchbar {
+  border: 1px var(--mid) solid;
+}
 .searchbar input {
   background-color: var(--near-bg);
   color: var(--text);
-  border: solid var(--mid) 1px;
+  border: solid var(--near-bg) 1px;
   border-radius: 0;
+  padding: 0 0.5rem;
 }
 .searchbar input::placeholder {
   color: var(--text);
@@ -124,7 +128,8 @@ h2 small {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1rem;
 }
-.grid-card {
+.grid-card,
+.grid-card a > p {
   list-style: none;
   display: contents;
 }
