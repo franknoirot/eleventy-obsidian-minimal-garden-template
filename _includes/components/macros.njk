@@ -19,7 +19,7 @@
   const input = searchbar.querySelector('input')
   const resultsDom = searchbar.querySelector('.search-results')
   const searchToggle = document.querySelector('.searchbar-wrapper button')
-
+  if (window.innerWidth > 768) { searchbar.style.display = 'flex' }
   function updateSearchResults(newInput) {
     if (newInput.length < 3) {
       resultsDom.innerHTML = ''

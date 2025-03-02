@@ -142,6 +142,7 @@ a:hover {
     flex-grow: 1;
     overflow: auto;
     padding-inline: 1rem;
+    margin: 0;
   }
   .searchbar-wrapper {
     display: contents;
