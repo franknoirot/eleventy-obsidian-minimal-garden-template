@@ -85,7 +85,7 @@ a:hover {
   color: var(--text);
   border: solid var(--near-bg) 1px;
   border-radius: 0;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
 }
 .searchbar input::placeholder {
   color: var(--text);
@@ -177,7 +177,8 @@ a:hover {
 }
 
 main {
-  margin: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 main img {
   max-width: 100%;

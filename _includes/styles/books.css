@@ -22,3 +22,8 @@ main {
 .meta p {
   margin: 0;
 }
+@media (max-width: 600px) {
+  .meta {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
